@@ -1,4 +1,4 @@
-﻿const express = require("express");
+const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -18,6 +18,7 @@ const app = express();
 
 const ALLOWED_ORIGINS = [
   /^http:\/\/localhost(:\d+)?$/,           // any localhost port (dev)
+  /^https:\/\/.*\.vercel\.app$/,            // all Vercel domains and previews
   "https://bvec-smart-campus-complaint-system.vercel.app", // production
 ];
 
@@ -45,7 +46,7 @@ app.use("/api/complaints", require("./routes/complaints"));
 
 app.get("/", (req, res) => res.json({ message: "Smart Campus API running" }));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // MongoDB Atlas connection event listeners
 mongoose.connection.on("connected", () => {

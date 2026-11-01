@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://smart-campus-complaint-system-pnz7.onrender.com";
+export const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
 const API = axios.create({
   baseURL: `${BASE_URL}/api`,
